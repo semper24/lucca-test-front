@@ -1,0 +1,48 @@
+<div style="width:1200px;">
+    <div class="wrapper" style="width:500px; float:left;">
+        <div class="header">
+            <h1>Chat A</h1>
+        </div>
+        <div class="chat-box">
+                <ul style="list-style-type: none;">
+                    <li style="padding-bottom: 10px;" *ngFor="let message of chat; let i = index">
+                        <div *ngIf="message.sender=='A'" class="msg sent" attr.sender-time="{{message.sender}} {{message.time}}">
+                            {{message.content}}
+                        </div>
+                        <div *ngIf="message.sender=='B'" class="msg rcvd" attr.sender-time="{{message.sender}} {{message.time}}">
+                            {{message.content}}
+                        </div>
+                    </li>
+                </ul>
+        </div>
+        <section>
+            <textarea [(ngModel)]="this.textChatA" placeholder="Say Something :)"
+                (keyup.enter)="sendMessageFrom('A')"></textarea>
+            <button style="--rad: 20px; --rad-sm: 3px;" (click)="sendMessageFrom('A')" mat-raised-button>Send</button>
+        </section>
+    </div>
+
+    <div class="wrapper" style="width:500px; float:right;">
+        <div class="header">
+            <h1>Chat B</h1>
+        </div>
+        <div class="chat-box">
+                <ul style="list-style-type: none;">
+                    <li style="padding-bottom: 10px;" *ngFor="let message of chat; let i = index">
+                        <div *ngIf="message.sender=='B'" class="msg sent" attr.sender-time="{{message.sender}} {{message.time}}">
+                            {{message.content}}
+                        </div>
+                        <div *ngIf="message.sender=='A'" class="msg rcvd" attr.sender-time="{{message.sender}} {{message.time}}">
+                            {{message.content}}
+                        </div>
+                    </li>
+                </ul>
+        </div>
+        <section>
+            <textarea [(ngModel)]="this.textChatB" placeholder="Say Something :)"
+                (keyup.enter)="sendMessageFrom('B')"></textarea>
+            <button style="--rad: 20px; --rad-sm: 3px;" (click)="sendMessageFrom('B')" mat-raised-button>Send</button>
+        </section>
+    </div>
+</div>
+<div style="clear: both;"></div>
