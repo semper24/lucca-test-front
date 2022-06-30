@@ -1,1 +1,8 @@
-<app-chat></app-chat>
+<div class="background">
+    <div class="wrapper" style="float: left">
+        <app-chat chatName="A" [chat]="chat" (newMessageEvent)="addMessage($event)"></app-chat>
+    </div>
+    <div class="wrapper" style="float: right;">
+        <app-chat chatName="B" [chat]="chat" (newMessageEvent)="addMessage($event)"></app-chat>
+    </div>
+</div>
